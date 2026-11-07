@@ -1,0 +1,55 @@
+{
+    "quizzes": [
+        {
+            "question": "배은우가 사는 지역은?",
+            "choices": [
+                "서울",
+                "부산",
+                "대전",
+                "광주"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "배은우의 나이는?",
+            "choices": [
+                "20살",
+                "25살",
+                "30살",
+                "35살"
+            ],
+            "answer": 1
+        },
+        {
+            "question": "배은우의 MBTI는?",
+            "choices": [
+                "ENFJ",
+                "ENTJ",
+                "INFJ",
+                "ESTJ"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "배은우가 좋아하는 노래장르는?",
+            "choices": [
+                "발라드",
+                "힙합",
+                "트로트",
+                "팝송"
+            ],
+            "answer": 4
+        },
+        {
+            "question": "배은우의 전공은?",
+            "choices": [
+                "컴퓨터공학",
+                "경영학",
+                "심리학",
+                "산업공학"
+            ],
+            "answer": 4
+        }
+    ],
+    "best_score": 4
+}
