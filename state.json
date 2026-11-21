@@ -49,6 +49,16 @@
                 "산업공학"
             ],
             "answer": 4
+        },
+        {
+            "question": "dk",
+            "choices": [
+                "dk",
+                "dk",
+                "dk",
+                "dk"
+            ],
+            "answer": 3
         }
     ],
     "best_score": 4
