@@ -58,3 +58,4 @@ python main.py
     ],
     "best_score": 5
 }
+- **실습 확인:** 브랜치 분리 및 병합(merge) 워크플로우 적용 완료
