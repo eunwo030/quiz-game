@@ -74,10 +74,21 @@ class QuizGame:
                 self.quizzes = [Quiz.from_dict(q) for q in data.get("quizzes", [])]
                 self.best_score = data.get("best_score", 0)
             print(f"📂 저장된 데이터를 불러왔습니다. (퀴즈 {len(self.quizzes)}개, 최고점수 {self.best_score}점)")
-        except (json.JSONDecodeError, KeyError, Exception) as e:
-            print(f"⚠️ 파일 손상 또는 읽기 오류 발생! 기본 데이터로 복구합니다. ({e})")
-            self.init_default_quizzes()
-            self.save_data()
+        except (json.JSONDecodeError, KeyError, TypeError, OSError) as e:
+            backup_path = f"{self.data_file}.bak"
+            try:
+                os.replace(self.data_file, backup_path)
+                print(f"⚠️ 파일 손상 또는 읽기 오류({e})가 발생해 기존 파일을 '{backup_path}'로 백업했습니다.")
+            except OSError:
+                print(f"⚠️ 파일 손상 또는 읽기 오류({e})가 발생했습니다.")
+
+            choice = input("기본 퀴즈 데이터로 초기화·복구할까요? (y/n): ").strip().lower()
+            if choice == "y":
+                self.init_default_quizzes()
+                self.save_data()
+                print("🔄 기본 퀴즈 데이터로 복구되었습니다.")
+            else:
+                print("ℹ️ 초기화를 취소했습니다. 기존 데이터를 확인해 주세요.")
 
     def display_menu(self):
         print("\n=============================")
@@ -130,7 +141,9 @@ class QuizGame:
         if score > self.best_score:
             self.best_score = score
             print("🎉 축하합니다! 새로운 최고 점수를 기록했습니다!")
-            self.save_data()
+        
+        # 퀴즈 풀기가 끝나면 최고 점수 갱신 여부와 상관없이 무조건 저장 수행
+        self.save_data()
         print("=============================")
 
     def add_quiz(self):
